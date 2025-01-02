@@ -1,7 +1,11 @@
 from beverage_class import *
+from flask import Flask, redirect, url_for, request, render_template
 
-boisson = Coffee('choco', '5 min', ['choco'], 'hot', 'juice', 0)
-boisson2 = Beverage('choco', '5 min', ['choco'], 'hot', 'juice', 0)
-print(boisson.get_all('name', 'type'))
-boisson.show()
-print(boisson2.get_all('name', 'type'))
+app = Flask(__name__, template_folder = 'templates', static_folder = 'static')
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
